@@ -14,7 +14,7 @@ EXPECTED=json.loads(Path(sys.argv[3]).read_text())['source_sha256']
 if hashlib.sha256(source.read_bytes()).hexdigest()!=EXPECTED:
     raise SystemExit('This timeline is aligned to a different recording. Re-align before building.')
 out.mkdir(parents=True,exist_ok=True)
-project_file=out/'wooden-houses-intro-v01.stories.json'
+project_file=out/'wooden-houses-intro-v02.stories.json'
 audio=out/'intro-narration.mp3'
 if project_file.exists() or audio.exists():
     raise SystemExit('Output exists; choose a new directory.')
@@ -38,11 +38,11 @@ for i,(start,end,graphic,name) in enumerate(cuts):
         source='Original explanatory illustration; NAHB analysis of 2024 Census data for the statistic',
         license='Original vector diagrams; not archival photography or construction drawings',
         textX=100,textY=820,textWidth=1700,fontSize=64,textColor='#172A3A',textPanel=True))
-p=dict(kind='american-stories-project',version=1,id=str(uuid.uuid4()),name='001 · Wooden Houses · Intro v01',
+p=dict(kind='american-stories-project',version=1,id=str(uuid.uuid4()),name='001 · Wooden Houses · Intro v02 · Times New Roman',
     width=1920,height=1080,fps=30,assets={'intro-voice':dict(type='audio',name='intro-narration.mp3',duration=41.7,
     src='data:audio/mpeg;base64,'+base64.b64encode(audio.read_bytes()).decode())},scenes=scenes,
     audio=dict(asset='intro-voice',trim=0,volume=1),captions=[],
-    production=dict(status='style-review',source_audio_sha256=EXPECTED,source_audio_duration=515.55,
+    production=dict(status='style-approved',font='Times New Roman',source_audio_sha256=EXPECTED,source_audio_duration=515.55,
     excerpt=[0,41.7],alignment='PocketSphinx word alignment to approved script; first 60 seconds only',
     notes='Original diagrams only; real-photo source could not be downloaded. No background music.'))
 project_file.write_text(json.dumps(p,ensure_ascii=False),encoding='utf-8')

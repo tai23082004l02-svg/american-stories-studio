@@ -34,7 +34,7 @@
 - Xem [EDITOR.md](EDITOR.md) để chạy, kiểm tra và xuất MP4. Cấu hình triển khai riêng tư được giữ trong kho nguồn hosting riêng; không công khai URL hoặc mã định danh hosting trong repo này.
 
 ## Việc tiếp theo
-Người dùng duyệt hoặc góp ý mẫu đồ họa 41,7 giây của tập 001. Sau khi duyệt, mở rộng theo audio thật. Chưa dựng toàn tập.
+Mẫu đồ họa 41,7 giây đã được duyệt, font chốt Times New Roman. Bước tiếp theo: mở rộng theo audio thật và phong cách này. Chưa dựng toàn tập.
 Cập nhật file này mỗi khi thay đổi trạng thái.
 
 
@@ -47,15 +47,24 @@ Cập nhật file này mỗi khi thay đổi trạng thái.
 ## Tập 001 — nhà khung gỗ Mỹ
 - Người dùng đã chốt chủ đề ngày 23/10/2026. Hồ sơ: episodes/001-wooden-houses/.
 - Đã chuẩn bị brief, research.md với 9 nguồn, script.en.md v01 gồm 8 phần / 1060 từ, narration.txt thuần lời, summary.vi.md và storyboard sơ bộ.
-- Người dùng đã duyệt kịch bản v01 ngày 23/10/2026. Lời đọc giữ nguyên 1.060 từ; đã nhận WAV 515,55 giây và dựng mẫu đồ họa 41,7 giây. Mẫu chờ duyệt; chưa dựng toàn tập.
+- Người dùng đã duyệt kịch bản v01 ngày 23/10/2026. Lời đọc giữ nguyên 1.060 từ; đã nhận WAV 515,55 giây và dựng mẫu đồ họa 41,7 giây. Mẫu đã duyệt, yêu cầu Times New Roman; chưa dựng toàn tập.
 - Luận điểm mở: nhà mặt gạch có thể dùng khung gỗ; số 94% chỉ là single-family completions năm 2024 theo NAHB phân tích Census, không phải toàn bộ nhà ở hoặc số mới nhất 2026.
 - Không nói gỗ luôn rẻ/khỏe hơn, không bảo đảm chống cháy/bão; phân biệt framing/cladding/insulation, lịch sử có tranh luận và các đánh đổi.
 - Audio thật dài 8 phút 35,55 giây. Giữ nguyên bản gốc; mẫu dùng dẫn xuất riêng được xử lý âm lượng.
 
-## Mẫu mở đầu tập 001 — chờ duyệt
+## Mẫu mở đầu tập 001 — đã duyệt
 - Đã dựng 8 cảnh / 41,7 giây theo mốc lời đọc đầu file; số liệu kết thúc khoảng 41,26 giây, dừng trước câu tiếp theo. Căn mốc bằng PocketSphinx cục bộ trên phần đầu, không tuyên bố đã kiểm toàn bộ lời đọc 8 phút.
 - Đồ họa gốc bằng canvas: ngoại thất/lộ khung, tách lớp tường, câu hỏi và lưới 100 ô với 94 ô tô màu, scope 2024 single-family completions luôn rõ.
 - Mẫu chỉ minh họa đồ họa, chưa dùng ảnh tư liệu thật. Đã xác định một nguồn ảnh Commons có license, nhưng tải bị policy mạng chặn; không thay ảnh AI rồi gọi là tư liệu thật. Chưa nhạc nền.
 - MP4 mẫu H.264/AAC 1920×1080 / 30fps / 41,7 giây. Bản âm thanh dẫn xuất đo khoảng -18,64 LUFS / -1,85 dBTP. Hash bản gốc và bản lưu riêng khớp nhau; không sửa WAV gốc.
 - Source audio và bản sao lưu có audio chỉ giữ trong nguồn hosting riêng tư; không đưa lên repo Public. Cấu hình hosting/đường dẫn truy cập cũng giữ riêng như trước.
 - Đã thêm lựa chọn preset diagram vào editor, giữ tương thích dự án cũ; mẫu mở thành dự án riêng. Xem episodes/001-wooden-houses/intro-review.md và tools/build-wooden-houses-intro.py.
+
+## Cập nhật font và duyệt hình — 23/10/2026
+- Người dùng đã duyệt mẫu 41,7 giây và yêu cầu Times New Roman. Quyết định này thay lựa chọn sans-serif trước đó; không hỏi duyệt lại phong cách.
+- Đã đổi chữ trong graphics.js, renderer.js (gồm phụ đề), CSS editor và trang review sang Times New Roman.
+- Bản MP4 v02 Times New Roman giữ nguyên 41,7 giây, 8 cảnh và audio/timing. Bản v01 cũ và WAV gốc được giữ.
+- Runtime render đã chuẩn bị Times New Roman thật; Chromium CDP xác nhận family Times New Roman / PostScript TimesNewRomanPS-BoldMT. Đã xem 8 frame sau đổi font.
+- tools/render.mjs kiểm tra font thực tế và từ chối xuất khi thiếu; đã thử nhánh thiếu font bị chặn và nhánh có font xuất được. Máy mới phải chuẩn bị font/cấu hình FONTCONFIG_FILE hợp lệ trước khi render.
+- Font chỉ cài tại runtime, không đưa TTF vào repo hoặc nhúng website. Người dùng Windows dùng font local; nếu thiết bị không có font thì giao diện dùng serif dự phòng, MP4 vẫn chặn fallback.
+- Bước tiếp: tiếp tục dựng toàn tập theo WAV 515,55 giây và phong cách đã duyệt. Hình tư liệu thật vẫn cần nguồn tải được/quyền sử dụng; mẫu hiện là minh họa gốc, không đổi nhãn thành ảnh thật.

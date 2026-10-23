@@ -13,7 +13,7 @@ Nội dung tiếng Anh cho khán giả Mỹ; trao đổi sản xuất bằng ti�
 ## Nhận diện
 - Nền trắng ngà, chữ xanh đen, cam làm điểm nhấn.
 - Mã màu làm việc đề xuất: nền #F5F1E8, chữ #172A3A, điểm nhấn #E87932. Đây là giá trị triển khai khởi đầu, có thể tinh chỉnh sau bản mẫu.
-- Chữ sans-serif rõ, lớn; ưu tiên một họ chữ có quyền sử dụng phù hợp.
+- **Times New Roman** cho toàn bộ chữ: video, số liệu, phụ đề, giao diện editor và trang duyệt. Người dùng chốt ngày 23/10/2026, thay lựa chọn sans-serif trước đó.
 - Chữ trên hình phục vụ ý chính, tên riêng và số liệu. Phụ đề đi theo audio thực tế.
 - Thumbnail: một hình chính rõ và một ý gây tò mò; hạn chế chữ, kiểm tra khả năng đọc ở kích thước điện thoại.
 - Tên thương hiệu và logo chưa chốt.
@@ -34,4 +34,4 @@ Chủ đề nhà gỗ Mỹ: khu dân cư → khung nhà đang thi công → mặ
 Chủ đề tập đầu vẫn chưa chốt; mọi luận điểm cần nghiên cứu trước khi viết thành lời kể.
 
 ## Trạng thái
-Đã chốt hướng phong cách. Chưa sản xuất hình ảnh, audio hoặc bản render.
+Đã nhận audio và người dùng đã duyệt mẫu đồ họa 41,7 giây ngày 23/10/2026, yêu cầu Times New Roman. Bản v02 đổi font, giữ nguyên lời đọc và timing; chưa dựng toàn tập.

@@ -2,7 +2,7 @@
 export const GRAPHICS=['none','house-exterior','house-reveal','wall-assembly','question','houses','skeleton','source','share'];
 const C={ink:'#172A3A',muted:'#687873',accent:'#E87932',wood:'#C99765',paper:'#F5F1E8',rule:'#D9D9CF',brick:'#A35B46'};
 const ease=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
-function text(c,s,x,y,size=34,color=C.ink,weight=600){c.fillStyle=color;c.font=`${weight} ${size}px Arial, sans-serif`;c.textAlign='left';c.textBaseline='top';c.fillText(s,x,y);}
+function text(c,s,x,y,size=34,color=C.ink,weight=600){c.fillStyle=color;c.font=`${weight} ${size}px "Times New Roman", Times, serif`;c.textAlign='left';c.textBaseline='top';c.fillText(s,x,y);}
 function rect(c,x,y,w,h,color,r=0){c.fillStyle=color;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();}
 function poly(c,points,fill,stroke=C.ink,width=2){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
 function line(c,x,y,x2,y2,color=C.ink,width=3){c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(x,y);c.lineTo(x2,y2);c.stroke();}

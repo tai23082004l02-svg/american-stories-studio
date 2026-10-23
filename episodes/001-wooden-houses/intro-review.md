@@ -1,7 +1,7 @@
-# Bản mẫu đồ họa v01 — chờ người dùng duyệt
+# Bản mẫu đồ họa — đã duyệt; v02 dùng Times New Roman
 
 Đã nhận audio của người dùng và giữ nguyên bản gốc. WAV dài **515,55 giây**, mono 24 kHz / PCM 16-bit.
-Đây là mẫu 41,7 giây theo audio thật, chưa phải bản đầy đủ và chưa được người dùng duyệt hình.
+Đây là mẫu 41,7 giây theo audio thật, chưa phải bản đầy đủ. Người dùng đã duyệt mẫu ngày 23/10/2026 và yêu cầu Times New Roman.
 
 ## Timeline mẫu
 | Bắt đầu | Kết thúc | Hình |
@@ -18,15 +18,16 @@
 Mốc căn bằng PocketSphinx trên phần lời đầu; đối chiếu transcript tự nhận dạng và transcript đã duyệt. Không tuyên bố mọi từ đã được kiểm nghe thủ công hoặc đã căn toàn bộ file.
 
 ## Hình và âm thanh
-- Đồ họa gốc, màu trắng ngà/xanh đen/cam, chữ sans-serif. Ghi rõ simplified illustration; không phải ảnh tư liệu hoặc bản vẽ thi công.
+- Đồ họa gốc, màu trắng ngà/xanh đen/cam, chữ Times New Roman. Ghi rõ simplified illustration; không phải ảnh tư liệu hoặc bản vẽ thi công.
 - Chưa có ảnh tư liệu trong mẫu: nguồn ảnh được tìm thấy nhưng chưa tải thành công qua policy mạng. Tìm thấy nguồn không đồng nghĩa đã đưa vào video.
 - Không thêm nhạc nền. Audio mẫu là dẫn xuất riêng, loudness đo khoảng -18,64 LUFS và true peak -1,85 dBTP; bản WAV gốc không thay đổi.
 - MP4 H.264/AAC, 1920×1080, 30fps, 41,7 giây. Có bản dự án chỉnh được và phụ đề VTT riêng trên nguồn bàn giao riêng tư.
 - Audio và bản backup có audio không được commit công khai; code/tài liệu của preset được lưu ở repo này.
 
-## Cần duyệt
-Bố cục, cỡ chữ, màu, nhịp chuyển cảnh và việc dùng đồ họa để giải thích.
-Sau phản hồi mới mở rộng toàn tập và bổ sung tư liệu có quyền sử dụng.
+## Đã duyệt
+Bố cục, màu, nhịp chuyển cảnh và cách dùng đồ họa. Font chốt Times New Roman.
+Bản v02 đã render lại bằng Times New Roman thật, kiểm tra font qua Chromium CDP (family Times New Roman, PostScript TimesNewRomanPS-BoldMT). Giữ lời đọc, thời lượng và mốc cảnh; giữ bản v01 cũ.
+Bước tiếp theo là mở rộng toàn tập và bổ sung tư liệu có quyền sử dụng.
 
 ## Kiểm tra
 Kiểm tra schema, tương thích dự án cũ, tính tất định khi tua, lưới 94/100; mở cả 8 cảnh trong Chromium và xem contact sheet. MP4 đã kiểm bằng FFprobe. Chưa kiểm nghe thủ công toàn bộ audio hoặc thử playback trên mọi thiết bị.

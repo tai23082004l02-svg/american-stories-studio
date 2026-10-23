@@ -49,3 +49,8 @@ Có thể dùng GitHub Pages nguồn main / và mở `/editor/`. Việc push mã
 Bảng Chỉnh cảnh có lựa chọn Đồ họa minh họa: nhà ngoại thất/lộ khung, bóc lớp tường, câu hỏi, dãy nhà, khung nhà, nguồn và dữ liệu 94% năm 2024. Đây là preset riêng cho tập 001, không phải trình tạo biểu đồ tùy ý. Đồ họa được vẽ theo thời gian và dùng chung trong preview/MP4; dự án cũ không có trường diagram vẫn mở được.
 
 Bản dựng có giọng đọc được bàn giao trên trang duyệt riêng tư; không nằm trong repo Public. Nút Mở bản dựng trên trang đó tạo dự án riêng trong trình duyệt, giữ bản cũ. Có thể tải bản sao lưu để mở bằng nút Mở bản sao lưu. File audio/backup có audio không được tự đưa lên GitHub công khai.
+
+## Font đã chốt: Times New Roman
+Toàn bộ chữ trong canvas (gồm số liệu/phụ đề), giao diện editor và trang duyệt dùng Times New Roman. Trình duyệt lấy font cài trên máy và có serif dự phòng để giao diện vẫn mở được. Công cụ render MP4 kiểm tra font thực tế qua Chromium CDP và từ chối render khi thiếu Times New Roman, tránh xuất nhầm font thay thế.
+
+Máy render cần cài Times New Roman hợp lệ; Linux có thể dùng FONTCONFIG_FILE trỏ cấu hình chứa font. Không commit hoặc nhúng file font có bản quyền vào website/repo. Bản MP4 mẫu v02 đã render bằng Times New Roman thật và kiểm tra 8 cảnh.

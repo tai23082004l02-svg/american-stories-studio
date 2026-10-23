@@ -20,7 +20,14 @@ try{
   let audio;
   if(p.audio.asset){audio=path.join(tmp,'narration');await writeFile(audio,Buffer.from(p.assets[p.audio.asset].src.split(',')[1],'base64'));}
   browser=await chromium.launch({headless:true,...(process.env.STORIES_CHROMIUM?{executablePath:process.env.STORIES_CHROMIUM}:{})});
-  const page=await browser.newPage();await page.goto(new URL('editor/',base.endsWith('/')?base:base+'/').href);await page.waitForFunction(()=>window.storiesStudio?.ready);await page.evaluate(p=>window.storiesStudio.load(p),p);
+  const page=await browser.newPage();await page.goto(new URL('editor/',base.endsWith('/')?base:base+'/').href);await page.waitForFunction(()=>window.storiesStudio?.ready);
+  await page.evaluate(()=>{const s=document.createElement('span');s.id='stories-font-probe';s.style.font='700 60px "Times New Roman"';s.textContent='Times New Roman 94%';document.body.append(s);});
+  const fontSession=await page.context().newCDPSession(page);await fontSession.send('DOM.enable');await fontSession.send('CSS.enable');
+  const fontDoc=await fontSession.send('DOM.getDocument');const fontNode=await fontSession.send('DOM.querySelector',{nodeId:fontDoc.root.nodeId,selector:'#stories-font-probe'});
+  const fontInfo=await fontSession.send('CSS.getPlatformFontsForNode',{nodeId:fontNode.nodeId});
+  await page.evaluate(()=>document.querySelector('#stories-font-probe').remove());await fontSession.detach();
+  if(!fontInfo.fonts.some(f=>f.familyName==='Times New Roman'))throw Error('Times New Roman is not installed. Install the font before rendering; fallback output is not allowed.');
+  await page.evaluate(p=>window.storiesStudio.load(p),p);
   await mkdir(path.dirname(path.resolve(output)),{recursive:true});
   const args=['-v','error','-n','-threads','2','-f','image2pipe','-vcodec','mjpeg','-framerate',String(p.fps),'-i','pipe:0'];
   if(audio)args.push('-ss',String(p.audio.trim),'-i',audio);

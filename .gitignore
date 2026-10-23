@@ -39,5 +39,6 @@ dist/
 private-media/
 review/*.mp4
 review/*.stories.json
-review/poster.png
+review/poster*.png
 review/*.vtt
+
