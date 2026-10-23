@@ -15,7 +15,7 @@
 - Chủ đề tập đầu đã chốt: Why So Many American Homes Are Built From Wood; kịch bản v01 đã được người dùng duyệt ngày 23/10/2026.
 - Đã nhận WAV tập 001 do người dùng cung cấp, dài 515,55 giây; không tự suy đoán dịch vụ/giọng dùng để tạo file.
 - Chưa xác nhận tên kênh/logo và việc dùng kênh The Signal Daily cho hướng này.
-- Đã tạo mẫu đồ họa tập 001 dài 41,7 giây, bàn giao riêng tư; chưa có bản dựng đầy đủ hoặc nhạc nền.
+- Đã có bản dựng đầy đủ tập 001 v02: timeline 515,55 giây / 68 cảnh, Times New Roman, minh họa gốc và phụ đề riêng; chưa nhạc nền. Bản MP4 cuối đã kiểm tra đầu ra và trang duyệt; dùng nguồn hosting riêng tư để triển khai.
 
 ## Khả năng và giới hạn
 - GitHub dùng lưu tài liệu, mã và tài nguyên nhỏ được phép công khai.
@@ -30,11 +30,11 @@
 - `tools/render.mjs`: xuất MP4 bằng cùng renderer + Chromium + FFmpeg; không ghi đè bản cũ. WebM xuất trong trình duyệt theo thời gian thực.
 - Đã kiểm tra với media QA được tạo bằng FFmpeg: nhập ảnh/video/WAV, trim đúng và từ chối quá độ dài, phụ đề, reorder, undo/redo, autosave/reload, backup/restore giữ bản trước, desktop/mobile và WebM có audio. MP4 mẫu 2 giây đúng H.264/AAC 1920×1080. Không coi đây là render tập nội dung đầu tiên.
 - Giới hạn: một media nền/cảnh + khối chữ, một track giọng đọc; footage luôn mute; chưa nhiều lớp/track, keyframe tự do, waveform, auto-align hoặc tìm tư liệu tự động. Tối đa 100 MiB/tệp, 500 cảnh, 60 phút; base64 có thể tốn bộ nhớ. Chưa nhập backup Credit_Studio.
-- Không có media sản xuất hoặc audio người dùng được upload trong lần này. Tư liệu QA nằm trong work/ bị ignore.
+- Audio tập 001 và backup có audio chỉ giữ trong nguồn hosting riêng tư. Tư liệu QA nằm trong work/ bị ignore.
 - Xem [EDITOR.md](EDITOR.md) để chạy, kiểm tra và xuất MP4. Cấu hình triển khai riêng tư được giữ trong kho nguồn hosting riêng; không công khai URL hoặc mã định danh hosting trong repo này.
 
 ## Việc tiếp theo
-Mẫu đồ họa 41,7 giây đã được duyệt, font chốt Times New Roman. Bước tiếp theo: mở rộng theo audio thật và phong cách này. Chưa dựng toàn tập.
+Bản đầy đủ v02 đã dựng theo WAV thật và Times New Roman; nhận nhận xét của người dùng trên trang duyệt sau khi triển khai. Chưa tự đăng YouTube.
 Cập nhật file này mỗi khi thay đổi trạng thái.
 
 
@@ -47,7 +47,7 @@ Cập nhật file này mỗi khi thay đổi trạng thái.
 ## Tập 001 — nhà khung gỗ Mỹ
 - Người dùng đã chốt chủ đề ngày 23/10/2026. Hồ sơ: episodes/001-wooden-houses/.
 - Đã chuẩn bị brief, research.md với 9 nguồn, script.en.md v01 gồm 8 phần / 1060 từ, narration.txt thuần lời, summary.vi.md và storyboard sơ bộ.
-- Người dùng đã duyệt kịch bản v01 ngày 23/10/2026. Lời đọc giữ nguyên 1.060 từ; đã nhận WAV 515,55 giây và dựng mẫu đồ họa 41,7 giây. Mẫu đã duyệt, yêu cầu Times New Roman; chưa dựng toàn tập.
+- Người dùng đã duyệt kịch bản v01 ngày 23/10/2026. Lời đọc giữ nguyên 1.060 từ; đã nhận WAV 515,55 giây và dựng mẫu đồ họa 41,7 giây. Mẫu đã duyệt, yêu cầu Times New Roman; đã mở rộng toàn tập v02, 68 cảnh.
 - Luận điểm mở: nhà mặt gạch có thể dùng khung gỗ; số 94% chỉ là single-family completions năm 2024 theo NAHB phân tích Census, không phải toàn bộ nhà ở hoặc số mới nhất 2026.
 - Không nói gỗ luôn rẻ/khỏe hơn, không bảo đảm chống cháy/bão; phân biệt framing/cladding/insulation, lịch sử có tranh luận và các đánh đổi.
 - Audio thật dài 8 phút 35,55 giây. Giữ nguyên bản gốc; mẫu dùng dẫn xuất riêng được xử lý âm lượng.
@@ -67,4 +67,19 @@ Cập nhật file này mỗi khi thay đổi trạng thái.
 - Runtime render đã chuẩn bị Times New Roman thật; Chromium CDP xác nhận family Times New Roman / PostScript TimesNewRomanPS-BoldMT. Đã xem 8 frame sau đổi font.
 - tools/render.mjs kiểm tra font thực tế và từ chối xuất khi thiếu; đã thử nhánh thiếu font bị chặn và nhánh có font xuất được. Máy mới phải chuẩn bị font/cấu hình FONTCONFIG_FILE hợp lệ trước khi render.
 - Font chỉ cài tại runtime, không đưa TTF vào repo hoặc nhúng website. Người dùng Windows dùng font local; nếu thiết bị không có font thì giao diện dùng serif dự phòng, MP4 vẫn chặn fallback.
-- Bước tiếp: tiếp tục dựng toàn tập theo WAV 515,55 giây và phong cách đã duyệt. Hình tư liệu thật vẫn cần nguồn tải được/quyền sử dụng; mẫu hiện là minh họa gốc, không đổi nhãn thành ảnh thật.
+- Đã mở rộng toàn tập theo WAV 515,55 giây và phong cách đã duyệt. Bản full hiện cũng dùng minh họa gốc, không đổi nhãn thành ảnh tư liệu thật.
+
+
+## Toàn tập 001 v02 — 23/10/2026
+- Người dùng yêu cầu triển khai toàn tập sau khi duyệt mẫu và font. Timeline 515,55 giây / 68 cảnh; giữ mẫu cũ và WAV gốc.
+- Đã căn 60 đoạn / 1.082 token phát âm bằng PocketSphinx trên cả recording; không tuyên bố đã kiểm nghe thủ công mọi từ. Phụ đề VTT/SRT có 139 cue riêng, không đốt vào MP4.
+- Thêm 22 preset minh họa và trường nhãn phần/chân đồ họa cho nhóm preset mới. Tiêu đề/dòng bổ sung vẫn chỉnh bằng các trường sẵn có.
+- Bản audio dẫn xuất đo −18,54 LUFS / −1,87 dBTP trước mux AAC. Không nhạc nền, không ảnh tư liệu thật.
+- Full v02 đã xuất H.264/AAC 1920×1080 / 30fps; container 515,566667 giây (làm tròn khung hình), 20.152.535 byte. Decode toàn bộ không lỗi. AAC đo −18,55 LUFS / −1,83 dBTP. Đã kiểm 68 frame, font thật, bố cục, browser QA và trang review: phát/tua, 6 tệp tải, mobile không tràn, mở query thành dự án riêng.
+- Máy chủ Python cơ bản không hỗ trợ HTTP Range nên kiểm thử tua ban đầu thất bại. Đã xác định nguyên nhân và thêm tools/serve.mjs bind loopback, hỗ trợ byte ranges; phép kiểm tra phát/tua đã qua.
+- Bộ đóng gói chỉ đưa review đang được link và các mẫu đã phát hành vào static output; bản full v01 đầu tiên giữ trong nguồn riêng tư, không nhân đôi vào deployment. WAV gốc không nằm trong static output.
+- Xem episodes/001-wooden-houses/full-review.md; công cụ dựng lại: tools/align-narration.py và tools/build-wooden-houses-full.py. Không đưa recording, manifest/timing, backup có audio, URL/identity hosting riêng tư lên Public.
+
+## Kết quả bàn giao cuối
+- Bản full v02 và trang review đã triển khai thành công bằng native Sites ngày 23/10/2026, giữ owner-private. Video, dự án và phụ đề được tải từ trang duyệt hiện hành; không đưa URL/identity hosting vào repo Public.
+- Mã và tài liệu đã cập nhật main. Chờ nhận xét sau khi người dùng xem toàn tập, rồi mới chuẩn bị bước đăng YouTube nếu được yêu cầu. Không dựng lại mẫu hoặc đổi font.

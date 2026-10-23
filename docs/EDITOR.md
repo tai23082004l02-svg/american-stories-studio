@@ -3,7 +3,7 @@
 Công cụ riêng trong repo này, tham khảo tổ chức timeline và quy trình của Credit_Studio. Không sửa hoặc sao chép các dự án/media của Credit_Studio; định dạng sao lưu hai công cụ khác nhau.
 
 ## Dùng công cụ
-Mở `editor/` trên máy chủ HTTP hoặc GitHub Pages. Chạy cục bộ từ thư mục repo: `python3 -m http.server 8000 --bind 127.0.0.1`, rồi mở http://127.0.0.1:8000/editor/.
+Mở `editor/` trên máy chủ HTTP hoặc GitHub Pages. Chạy cục bộ từ thư mục repo: `node tools/serve.mjs 8000`, rồi mở http://127.0.0.1:8000/editor/.
 
 1. Tạo và đặt tên dự án; nhập ảnh PNG/JPEG/WebP, video MP4/WebM hoặc audio được trình duyệt hỗ trợ.
 2. Chọn cảnh rồi bấm **Dùng** cạnh tư liệu. Với audio, thao tác chọn tệp làm giọng đọc.
@@ -28,7 +28,7 @@ Cần Node.js, FFmpeg có H.264/AAC và Playwright/Chromium:
 ```sh
 npm install
 npx playwright install chromium
-python3 -m http.server 8000 --bind 127.0.0.1
+node tools/serve.mjs 8000
 ```
 
 Giữ máy chủ chạy, mở terminal khác ở thư mục repo:
@@ -54,3 +54,13 @@ Bản dựng có giọng đọc được bàn giao trên trang duyệt riêng t�
 Toàn bộ chữ trong canvas (gồm số liệu/phụ đề), giao diện editor và trang duyệt dùng Times New Roman. Trình duyệt lấy font cài trên máy và có serif dự phòng để giao diện vẫn mở được. Công cụ render MP4 kiểm tra font thực tế qua Chromium CDP và từ chối render khi thiếu Times New Roman, tránh xuất nhầm font thay thế.
 
 Máy render cần cài Times New Roman hợp lệ; Linux có thể dùng FONTCONFIG_FILE trỏ cấu hình chứa font. Không commit hoặc nhúng file font có bản quyền vào website/repo. Bản MP4 mẫu v02 đã render bằng Times New Roman thật và kiểm tra 8 cảnh.
+
+
+## Đồ họa và bản đầy đủ tập 001
+Đã bổ sung 22 preset: lịch sử, vật liệu tiêu chuẩn, sàn theo tầng, quy trình xây, yếu tố chi phí, cấu tạo tường, veneer, cầu nhiệt, cách nhiệt liên tục, advanced framing, kiểm tra thiết kế, đường truyền lực, liên kết, đánh giá hệ thống, ẩm, phơi nhiễm cháy, ba nhóm nguyên nhân, điều kiện vùng miền và màn hình kết. Nhãn phần/chân đồ họa có thể chỉnh trong inspector; tiêu đề/dòng bổ sung dùng trường chữ thông thường.
+
+Bản đầy đủ v02 dài 515,55 giây với 68 cảnh. Phụ đề VTT/SRT riêng có thể bật/tắt trên trang duyệt; không đốt sẵn vào MP4. Muốn đốt chữ khi xuất lại, nhập SRT trong editor. Dự án tự mở thành bản riêng, giữ bản cũ.
+
+Công cụ ngoài trình duyệt `tools/align-narration.py` căn từ theo transcript có sẵn bằng PocketSphinx 5.0.4 + FFmpeg, xuất JSON timing vào thư mục mới. Đây là forced alignment, không xác minh mọi từ thực sự được đọc; cần đối chiếu recording. `tools/build-wooden-houses-full.py` nhận WAV, thư mục đầu ra mới, manifest riêng chứa hash, paragraphs.json và alignment-full.json; từ chối sai recording hoặc transcript. Manifest/audio/timing thực tế và dự án có audio chỉ giữ riêng tư. Máy mới cần đo lại loudness nếu đổi recording; các tham số hiện tại chỉ dành cho audio đã duyệt của tập 001.
+
+Máy chủ `tools/serve.mjs` chỉ bind 127.0.0.1, hỗ trợ HTTP byte ranges cho phát/tua MP4. Máy chủ HTTP đơn giản không hỗ trợ Range có thể phát được nhưng không tua tới phần chưa tải. Đây là tiện ích xem thử cục bộ, không phải máy chủ public.
