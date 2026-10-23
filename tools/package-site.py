@@ -8,4 +8,7 @@ shutil.copy2(root / 'index.html', dist / 'index.html')
 shutil.copytree(root / 'editor', dist / 'editor', dirs_exist_ok=True)
 (dist / 'docs').mkdir(exist_ok=True)
 shutil.copy2(root / 'docs' / 'EDITOR.md', dist / 'docs' / 'EDITOR.md')
-print('Static editor packaged; user projects and media excluded.')
+print('Static site packaged; original recording directory excluded.')
+
+if (root / 'review').exists():
+    shutil.copytree(root / 'review', dist / 'review', dirs_exist_ok=True)

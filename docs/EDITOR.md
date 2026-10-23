@@ -44,3 +44,8 @@ Windows thay đường dẫn cho phù hợp và dùng `py` thay `python3` nếu 
 
 ## Phát hành
 Có thể dùng GitHub Pages nguồn main / và mở `/editor/`. Việc push mã không chứng minh Pages đã được bật hoặc deploy thành công. Không đặt token/credentials hoặc bản dựng riêng trong thư mục được publish.
+
+## Mẫu đồ họa tập 001
+Bảng Chỉnh cảnh có lựa chọn Đồ họa minh họa: nhà ngoại thất/lộ khung, bóc lớp tường, câu hỏi, dãy nhà, khung nhà, nguồn và dữ liệu 94% năm 2024. Đây là preset riêng cho tập 001, không phải trình tạo biểu đồ tùy ý. Đồ họa được vẽ theo thời gian và dùng chung trong preview/MP4; dự án cũ không có trường diagram vẫn mở được.
+
+Bản dựng có giọng đọc được bàn giao trên trang duyệt riêng tư; không nằm trong repo Public. Nút Mở bản dựng trên trang đó tạo dự án riêng trong trình duyệt, giữ bản cũ. Có thể tải bản sao lưu để mở bằng nút Mở bản sao lưu. File audio/backup có audio không được tự đưa lên GitHub công khai.

@@ -1,9 +1,10 @@
+import {GRAPHICS} from './graphics.js';
 export const copy = x => structuredClone(x);
 export const uid = () => crypto.randomUUID();
 export const total = p => p.scenes.reduce((n,s)=>n+s.duration,0);
 export const clamp = (x,a,b)=>Math.max(a,Math.min(b,x));
 export function scene(preset='title') {
-  return {id:uid(),name:'Cảnh mới',duration:5,asset:null,trim:0,background:'#F5F1E8',fit:'cover',motion:'none',layout:preset,
+  return {id:uid(),name:'Cảnh mới',duration:5,asset:null,trim:0,background:'#F5F1E8',fit:'cover',motion:'none',layout:preset,diagram:'none',
     text:preset==='title'?'Your story starts here':'',subtitle:'',source:'',license:'',
     textX:100,textY:preset==='title'?380:820,textWidth:1700,fontSize:preset==='title'?100:64,textColor:'#172A3A',textPanel:true};
 }
@@ -24,6 +25,7 @@ export function validate(p){
   const ids=new Set();
   for(const s of p.scenes){
     if(!s||!str(s.id,100)||ids.has(s.id)||!str(s.name,200)||!num(s.duration,.1,600)||!num(s.trim,0,86400)||!color(s.background)||!['cover','contain'].includes(s.fit)||!['none','zoom-in','zoom-out'].includes(s.motion)||!['title','media','lower-third'].includes(s.layout)||!str(s.text,2000)||!str(s.subtitle,2000)||!str(s.source,3000)||!str(s.license,1000)||!num(s.textX,0,1920)||!num(s.textY,0,1080)||!num(s.textWidth,100,1920)||!num(s.fontSize,20,200)||!color(s.textColor)||typeof s.textPanel!=='boolean')fail('Thông số cảnh không hợp lệ.');
+    if(s.diagram!==undefined&&!GRAPHICS.includes(s.diagram))fail('Đồ họa minh họa không hợp lệ.');
     ids.add(s.id);if(s.asset!==null){const a=p.assets[s.asset];if(!a||a.type==='audio')fail('Cảnh thiếu ảnh hoặc video.');if(a.type==='video'&&s.trim+s.duration>a.duration+.05)fail('Điểm cắt cảnh vượt độ dài video.');}
   }
   if(total(p)>3600)fail('Bản đầu hỗ trợ tối đa 60 phút.');
