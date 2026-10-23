@@ -23,3 +23,13 @@ Dự án sản xuất nội dung riêng, độc lập với Down Arena. Trao đ�
 - work/ và output/: tài nguyên tạm và bản render local, không đưa vào Git.
 
 Repo Public: chỉ đưa lên tài nguyên có quyền công khai. Không lưu token, mật khẩu, khóa luồng hoặc tài nguyên bên thứ ba chưa được phép phân phối lại. Chưa cấp giấy phép tái sử dụng chung cho mã và nội dung.
+
+## Phòng dựng video v0.1
+
+Mở `editor/` để dựng cảnh từ ảnh, video tư liệu và giọng đọc. Có timeline, điểm cắt, mẫu chữ, chuyển động phóng/thu, phụ đề SRT, undo/redo và sao lưu chứa media.
+Xuất WebM trong trình duyệt; MP4 dùng Playwright + FFmpeg cục bộ. [Hướng dẫn](docs/EDITOR.md).
+Bản sửa lưu trên trình duyệt, chưa tự đồng bộ GitHub. Công cụ riêng, không thay đổi Credit_Studio.
+
+
+
+Bản dùng thử đã triển khai riêng tư qua Sites. Thông tin truy cập được bàn giao trực tiếp, không lưu trong repo công khai.

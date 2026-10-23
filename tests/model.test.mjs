@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fresh,scene,validate,locate,total,parseSRT} from '../editor/model.js';
+test('scene boundary uses next scene, final frame stays in last scene',()=>{const p=fresh();p.scenes.push(scene());assert.equal(total(p),10);assert.equal(locate(p,5).index,1);assert.equal(locate(p,10).local,5);assert.equal(locate(p,-1).local,0);});
+test('rejects unsupported imports, duplicate IDs and invalid numbers',()=>{assert.throws(()=>validate({kind:'credit-studio-video'}));const p=fresh();p.scenes.push({...p.scenes[0]});assert.throws(()=>validate(p));p.scenes.pop();p.scenes[0].duration=NaN;assert.throws(()=>validate(p));});
+test('clip trims cannot exceed footage and unsafe sources are rejected',()=>{const p=fresh();p.assets.a={type:'video',name:'clip.mp4',duration:4,src:'data:video/mp4;base64,AAAA'};p.scenes[0].asset='a';p.scenes[0].duration=3;p.scenes[0].trim=2;assert.throws(()=>validate(p));p.scenes[0].trim=1;assert.equal(validate(p),p);p.assets.a.src='https://example.com/video.mp4';assert.throws(()=>validate(p));});
+test('SRT reads multiline cues, CRLF, comma milliseconds and rejects inverted cues',()=>{assert.deepEqual(parseSRT('1\r\n00:00:01,250 --> 00:00:02,500\r\nHello\r\nworld'),[{start:1.25,end:2.5,text:'Hello\nworld'}]);assert.throws(()=>parseSRT('1\n00:00:03,000 --> 00:00:02,000\nBad'));});
+test('missing audio references and excessively long projects fail',()=>{const p=fresh();p.audio.asset='missing';assert.throws(()=>validate(p));p.audio.asset=null;p.scenes=Array.from({length:7},()=>({...scene(),duration:600}));assert.throws(()=>validate(p));});

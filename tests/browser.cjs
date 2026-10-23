@@ -1,0 +1,44 @@
+// End-to-end verification with generated fixtures; does not touch production media.
+const {chromium}=require('playwright');
+const {spawn,execFileSync}=require('node:child_process');
+const fs=require('node:fs');const path=require('node:path');const assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..'),work=path.join(root,'work','qa');fs.mkdirSync(work,{recursive:true});
+function ff(args){execFileSync('ffmpeg',['-v','error','-y',...args],{stdio:'pipe'});}
+ff(['-f','lavfi','-i','color=c=0xE87932:s=640x360:d=2','-c:v','libx264','-threads','1','-pix_fmt','yuv420p',path.join(work,'clip.mp4')]);
+ff(['-f','lavfi','-i','sine=frequency=440:duration=4','-c:a','pcm_s16le',path.join(work,'voice.wav')]);
+ff(['-f','lavfi','-i','color=c=0x172A3A:s=640x360','-frames:v','1','-threads','1',path.join(work,'photo.png')]);
+const srt=path.join(work,'captions.srt');fs.writeFileSync(srt,'1\n00:00:00,100 --> 00:00:01,000\nTest caption\n');
+let browser;
+(async()=>{
+ const errors=[];browser=await chromium.launch({headless:true,executablePath:process.env.STORIES_CHROMIUM||'/usr/bin/chromium',args:['--no-sandbox']});
+ const page=await browser.newPage({viewport:{width:1500,height:1100},acceptDownloads:true});page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:8000/editor/');await page.waitForFunction(()=>window.storiesStudio?.ready);
+ await page.locator('#name').fill('Documentary QA');await page.locator('#name').dispatchEvent('change');
+ await page.locator('#media-input').setInputFiles(['clip.mp4','voice.wav','photo.png'].map(x=>path.join(work,x)));await page.waitForFunction(()=>Object.keys(window.storiesStudio.project.assets).length===3);
+ await page.waitForFunction(()=>document.querySelectorAll('.asset').length===3);
+ await page.locator('.asset').filter({hasText:'clip.mp4'}).getByRole('button',{name:'Dùng',exact:true}).click();
+ await page.waitForFunction(()=>window.storiesStudio.project.scenes[0].asset!==null);assert.equal(await page.locator('#duration').inputValue(),'2');
+ await page.locator('#duration').fill('1');await page.locator('#duration').dispatchEvent('change');await page.waitForFunction(()=>window.storiesStudio.project.scenes[0].duration===1);
+ await page.locator('#trim').fill('0.5');await page.locator('#trim').dispatchEvent('change');await page.waitForFunction(()=>window.storiesStudio.project.scenes[0].trim===.5);
+ await page.locator('#duration').fill('2');await page.locator('#duration').dispatchEvent('change');await page.waitForFunction(()=>document.querySelector('#message').textContent.includes('vượt'));assert.equal(await page.locator('#duration').inputValue(),'1');
+ await page.locator('.asset').filter({hasText:'voice.wav'}).getByRole('button',{name:'Dùng',exact:true}).click();await page.waitForFunction(()=>window.storiesStudio.project.audio.asset!==null);
+ await page.locator('#add').click();await page.waitForFunction(()=>window.storiesStudio.project.scenes.length===2);
+ await page.locator('.asset').filter({hasText:'photo.png'}).getByRole('button',{name:'Dùng',exact:true}).click();
+ await page.locator('#duration').fill('1');await page.locator('#duration').dispatchEvent('change');await page.waitForFunction(()=>window.storiesStudio.project.scenes[1].duration===1);
+ await page.locator('#layout').selectOption('lower-third');await page.waitForFunction(()=>window.storiesStudio.project.scenes[1].layout==='lower-third');
+ await page.locator('#text').fill('REAL STORIES. CLEARLY TOLD.');await page.locator('#text').dispatchEvent('change');await page.waitForFunction(()=>window.storiesStudio.project.scenes[1].text.includes('REAL STORIES'));
+ await page.locator('#source').fill('Generated QA fixture');await page.locator('#source').dispatchEvent('change');
+ await page.locator('#srt-input').setInputFiles(srt);await page.waitForFunction(()=>window.storiesStudio.project.captions.length===1);
+ await page.locator('#left').click();await page.waitForFunction(()=>window.storiesStudio.project.scenes[0].text.includes('REAL STORIES'));
+ await page.locator('#undo').click();await page.waitForFunction(()=>!window.storiesStudio.project.scenes[0].text.includes('REAL STORIES'));
+ await page.locator('#redo').click();await page.waitForFunction(()=>window.storiesStudio.project.scenes[0].text.includes('REAL STORIES'));
+ await page.waitForFunction(()=>document.querySelector('#save-status').textContent.includes('Đã lưu'));
+ await page.reload();await page.waitForFunction(()=>window.storiesStudio?.ready);assert.equal(await page.locator('#name').inputValue(),'Documentary QA');assert.equal(await page.evaluate(()=>window.storiesStudio.project.scenes.length),2);
+ const before=await page.evaluate(()=>window.storiesStudio.project.id);const backup=page.waitForEvent('download');await page.locator('#backup').click();const d=await backup;const json=path.join(work,'project.stories.json');await d.saveAs(json);
+ await page.locator('#project-input').setInputFiles(json);await page.waitForFunction(id=>window.storiesStudio.project.id!==id,before);await page.waitForFunction(()=>document.querySelectorAll('#projects option').length===2);
+ await page.evaluate(()=>window.storiesStudio.renderAt(.5));await page.screenshot({path:path.join(work,'editor-desktop.png'),fullPage:true});
+ const out=page.waitForEvent('download',{timeout:30000});await page.locator('#export').click();const webm=await out;await webm.saveAs(path.join(work,'export.webm'));
+ const probe=JSON.parse(execFileSync('ffprobe',['-v','error','-show_streams','-of','json',path.join(work,'export.webm')],{encoding:'utf8'}));assert(probe.streams.some(s=>s.codec_type==='video'));assert(probe.streams.some(s=>s.codec_type==='audio'));assert.equal(probe.streams.find(s=>s.codec_type==='video').width,1920);
+ await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(work,'editor-mobile.png'),fullPage:true});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ assert.deepEqual(errors,[]);console.log('PASS: media import, trimming and validation, narration, captions, reorder, undo/redo, autosave/reload, portable backup, safe restore, actual WebM audio/video, mobile layout.');
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();});

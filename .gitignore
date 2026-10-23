@@ -27,3 +27,10 @@ __pycache__/
 node_modules/
 .DS_Store
 Thumbs.db
+
+# Generated hosting output
+dist/
+
+
+# Private hosting identity (kept only in the private hosting source)
+.openai/hosting.json
