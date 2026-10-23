@@ -26,6 +26,7 @@ export function validate(p){
   for(const s of p.scenes){
     if(!s||!str(s.id,100)||ids.has(s.id)||!str(s.name,200)||!num(s.duration,.1,600)||!num(s.trim,0,86400)||!color(s.background)||!['cover','contain'].includes(s.fit)||!['none','zoom-in','zoom-out'].includes(s.motion)||!['title','media','lower-third'].includes(s.layout)||!str(s.text,2000)||!str(s.subtitle,2000)||!str(s.source,3000)||!str(s.license,1000)||!num(s.textX,0,1920)||!num(s.textY,0,1080)||!num(s.textWidth,100,1920)||!num(s.fontSize,20,200)||!color(s.textColor)||typeof s.textPanel!=='boolean')fail('Thông số cảnh không hợp lệ.');
     if(s.diagram!==undefined&&!GRAPHICS.includes(s.diagram))fail('Đồ họa minh họa không hợp lệ.');
+    for(const key of ['diagramKicker','diagramFooter'])if(s[key]!==undefined&&!str(s[key],200))fail('Nhãn đồ họa không hợp lệ.');
     ids.add(s.id);if(s.asset!==null){const a=p.assets[s.asset];if(!a||a.type==='audio')fail('Cảnh thiếu ảnh hoặc video.');if(a.type==='video'&&s.trim+s.duration>a.duration+.05)fail('Điểm cắt cảnh vượt độ dài video.');}
   }
   if(total(p)>3600)fail('Bản đầu hỗ trợ tối đa 60 phút.');

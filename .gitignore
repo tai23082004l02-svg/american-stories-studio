@@ -42,3 +42,6 @@ review/*.stories.json
 review/poster*.png
 review/*.vtt
 
+
+# Private review subtitle delivery
+review/*.srt

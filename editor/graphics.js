@@ -1,5 +1,6 @@
+import {EPISODE_GRAPHICS,drawEpisodeGraphic} from './episode-graphics.js';
 // Original explanatory illustrations; not construction drawings or documentary photographs.
-export const GRAPHICS=['none','house-exterior','house-reveal','wall-assembly','question','houses','skeleton','source','share'];
+export const GRAPHICS=['none','house-exterior','house-reveal','wall-assembly','question','houses','skeleton','source','share',...EPISODE_GRAPHICS];
 const C={ink:'#172A3A',muted:'#687873',accent:'#E87932',wood:'#C99765',paper:'#F5F1E8',rule:'#D9D9CF',brick:'#A35B46'};
 const ease=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
 function text(c,s,x,y,size=34,color=C.ink,weight=600){c.fillStyle=color;c.font=`${weight} ${size}px "Times New Roman", Times, serif`;c.textAlign='left';c.textBaseline='top';c.fillText(s,x,y);}
@@ -39,7 +40,8 @@ function share(c,t){
  header(c,'WHY WOOD IS SO COMMON');const value=Math.round(94*ease(t/.75));text(c,value+'%',96,270,260,C.ink,700);text(c,'wood-framed',110,586,61,C.ink,700);text(c,'New single-family homes',110,705,40,C.muted,400);text(c,'completed in 2024',110,760,40,C.muted,400);
  const x=1035,y=260;for(let i=0;i<100;i++)rect(c,x+(i%10)*67,y+Math.floor(i/10)*57,52,42,i<value?C.accent:'#DDDCD3',5);text(c,'Each tile = one percentage point',1035,870,25,C.muted,400);footer(c,'SOURCE: NAHB ANALYSIS OF 2024 U.S. CENSUS BUREAU DATA · NOT ALL EXISTING HOMES');
 }
-export function drawGraphic(c,type,t){
+export function drawGraphic(c,type,t,scene={}){
+ if(drawEpisodeGraphic(c,type,t,scene))return;
  if(!type||type==='none')return;c.save();
  if(type==='wall-assembly')assembly(c,t);
  else if(type==='share')share(c,t);
