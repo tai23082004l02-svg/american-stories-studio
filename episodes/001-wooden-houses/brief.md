@@ -1,6 +1,6 @@
 # Episode 001 — Brief
 
-- Status: script-review
+- Status: awaiting-audio
 - Approved topic: Why So Many American Homes Are Built From Wood
 - Audience: US viewers; English narration, Vietnamese production discussion.
 - Viewer question: Why does light wood framing remain so common in American single-family housing?
@@ -12,7 +12,7 @@
 - Key scope: NAHB analysis of 2024 Census completions; 94% is new single-family completions, not the standing housing stock or all buildings.
 - Narration method: not yet chosen. Audio received: no.
 - Source text verified: yes, to the scoped claims in research.md; asset rights not yet cleared.
-- Script approved: no. Visual sample approved: no. Final render approved: no.
+- Script approved: yes — user approved v01 on 23 October 2026. Visual sample approved: no. Final render approved: no.
 - Published URL: none.
 
 ## Pronunciation

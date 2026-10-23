@@ -1,6 +1,6 @@
 # Tóm tắt để duyệt — kịch bản v01
 
-**Chủ đề đã chốt; nội dung dưới đây đang chờ bạn duyệt.**
+**Chủ đề và kịch bản v01 đã được người dùng duyệt ngày 23/10/2026. Nội dung lời đọc giữ nguyên.**
 
 Mở bằng câu: “Ngôi nhà gạch bên kia đường có thể là một ngôi nhà khung gỗ.” Từ đó dẫn vào câu hỏi về kết cấu bị che phía sau bề mặt, thay vì chê nhà Mỹ yếu hoặc làm rẻ tiền.
 
@@ -14,7 +14,7 @@ Mở bằng câu: “Ngôi nhà gạch bên kia đường có thể là một ng
 7. Thừa nhận rủi ro ẩm, sinh vật phá gỗ và lửa; đánh giá tổng thể thay vì một video nhà bị phá.
 8. Kết: vật liệu, lịch sử và cách lắp ráp cùng tạo nên lựa chọn phổ biến. Lời mời đăng ký ngắn, sau khi đã giải đáp.
 
-## Đề nghị duyệt
+## Ghi chú sản xuất đã duyệt
 - Giữ cách kể giải thích, tò mò, không công kích Mỹ hoặc so sánh hơn thua với một quốc gia khác.
 - Dự kiến 7–9 phút tùy giọng, chưa có audio.
 - Hình AI không dùng làm bằng chứng xây dựng hoặc tư liệu sự kiện.

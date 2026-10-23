@@ -1,6 +1,6 @@
 # Why So Many American Homes Are Built From Wood
 
-Version 01 — script awaiting user review. Topic approved 23 October 2026; script approval is separate.
+Version 01 — approved by the user on 23 October 2026. Narration text unchanged at approval.
 Narration: 1060 whitespace-separated words; approximately 7.1–8.5 minutes at 125–150 words per minute, plus pauses.
 Headings and source notes are editorial, not spoken. Pure narration is in narration.txt.
 

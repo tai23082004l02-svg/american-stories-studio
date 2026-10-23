@@ -12,7 +12,7 @@
 ## Đề xuất đang chờ chốt
 - Video giải thích có cốt truyện về công nghệ, phát minh, sản phẩm và đời sống Mỹ.
 - Thử 3 video dài 6–9 phút; chỉ mở rộng sau khi có số liệu.
-- Chủ đề tập đầu đã chốt: Why So Many American Homes Are Built From Wood; kịch bản v01 đang chờ duyệt, chưa phải bản đã duyệt.
+- Chủ đề tập đầu đã chốt: Why So Many American Homes Are Built From Wood; kịch bản v01 đã được người dùng duyệt ngày 23/10/2026.
 - Chưa chọn giọng thật hay giọng tổng hợp; chưa nhận audio.
 - Chưa xác nhận tên kênh/logo và việc dùng kênh The Signal Daily cho hướng này.
 - Chưa có video, hình ảnh, nhạc hoặc bản render được sản xuất trong repo.
@@ -34,7 +34,7 @@
 - Xem [EDITOR.md](EDITOR.md) để chạy, kiểm tra và xuất MP4. Cấu hình triển khai riêng tư được giữ trong kho nguồn hosting riêng; không công khai URL hoặc mã định danh hosting trong repo này.
 
 ## Việc tiếp theo
-Người dùng duyệt hoặc góp ý kịch bản tập 001, sau đó cung cấp giọng đọc từ narration.txt đã chốt. Dựng mẫu 30–45 giây theo audio thật để duyệt phong cách trước khi mở rộng toàn tập. Chưa tạo hình sản xuất hoặc render tập 001.
+Người dùng cung cấp giọng đọc từ narration.txt tập 001 đã duyệt. Dựng mẫu 30–45 giây theo audio thật để duyệt phong cách trước khi mở rộng toàn tập. Chưa tạo hình sản xuất hoặc render tập 001.
 Cập nhật file này mỗi khi thay đổi trạng thái.
 
 
@@ -47,7 +47,7 @@ Cập nhật file này mỗi khi thay đổi trạng thái.
 ## Tập 001 — nhà khung gỗ Mỹ
 - Người dùng đã chốt chủ đề ngày 23/10/2026. Hồ sơ: episodes/001-wooden-houses/.
 - Đã chuẩn bị brief, research.md với 9 nguồn, script.en.md v01 gồm 8 phần / 1060 từ, narration.txt thuần lời, summary.vi.md và storyboard sơ bộ.
-- Kịch bản chờ duyệt; chưa chọn phương pháp giọng đọc, chưa nhận audio, chưa tìm/tải media sản xuất, chưa tạo ảnh hoặc render mẫu.
+- Người dùng đã duyệt kịch bản v01 ngày 23/10/2026. Lời đọc giữ nguyên 1.060 từ; chưa chọn phương pháp giọng đọc, chưa nhận audio, chưa tìm/tải media sản xuất, chưa tạo ảnh hoặc render mẫu.
 - Luận điểm mở: nhà mặt gạch có thể dùng khung gỗ; số 94% chỉ là single-family completions năm 2024 theo NAHB phân tích Census, không phải toàn bộ nhà ở hoặc số mới nhất 2026.
 - Không nói gỗ luôn rẻ/khỏe hơn, không bảo đảm chống cháy/bão; phân biệt framing/cladding/insulation, lịch sử có tranh luận và các đánh đổi.
 - Dự kiến 7,1–8,5 phút ở 125–150 từ/phút, thời lượng thật chờ audio. Không dựng hàng loạt ảnh trước khi có lời đọc đã duyệt.
