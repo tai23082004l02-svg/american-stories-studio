@@ -1,0 +1,29 @@
+# Credentials
+.env
+.env.*
+!.env.example
+.secrets/
+*token*.json
+client_secret*.json
+credentials*.json
+*.pem
+*.key
+
+# Local work and large renders
+work/
+output/
+renders/
+raw/
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.flac
+
+# Caches
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+Thumbs.db
